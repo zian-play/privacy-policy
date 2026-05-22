@@ -319,11 +319,13 @@
   <!-- 헤더 -->
   <div class="pp-header">
     <div class="pp-header-left">
-      <a href="index.html" class="back-btn">
-        <svg width="10" height="10" viewBox="6 4 10 16" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="15,18 9,12 15,6" />
+      <a href="javascript:void(0)" onclick="handleClose()" class="back-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
-        <span id="back-label">뒤로</span>
+        <span id="close-label">닫기</span>
       </a>
       <span class="pp-title" id="page-title">개인정보처리방침</span>
     </div>
@@ -523,8 +525,8 @@
 
   <script>
     const LABELS = {
-      ko: { back: '뒤로', title: '개인정보처리방침' },
-      en: { back: 'Back', title: 'Privacy Policy' },
+      ko: { close: '닫기', title: '개인정보처리방침' },
+      en: { close: 'Close', title: 'Privacy Policy' },
     };
 
     function setLang(lang) {
@@ -536,10 +538,23 @@
         btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : 'English'));
       });
       // 헤더 텍스트
-      document.getElementById('back-label').textContent = LABELS[lang].back;
+      document.getElementById('close-label').textContent = LABELS[lang].close;
       document.getElementById('page-title').textContent = LABELS[lang].title;
       document.documentElement.lang = lang;
       localStorage.setItem('dg_lang', lang);
+    }
+
+    function handleClose() {
+      if (document.referrer && document.referrer.includes(window.location.hostname)) {
+        history.back();
+      } else {
+        try {
+          window.close();
+        } catch (e) { }
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 100);
+      }
     }
 
     // 앱 언어 설정 이어받기
