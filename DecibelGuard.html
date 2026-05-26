@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DecibelGuard - 개인정보처리방침 / Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f4f2ee;
+      --card: #ffffff;
+      --border: rgba(0, 0, 0, 0.09);
+      --gold: #a07830;
+      --gold-light: #c09848;
+      --text: #1a1613;
+      --text-secondary: #5a5248;
+      --text-muted: #9a9088;
+      --radius: 16px;
+      --font: 'Outfit', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+
+    /* 헤더 */
+    .pp-header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .pp-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 6px;
+      color: var(--gold);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .back-btn:hover {
+      background: rgba(160, 120, 48, 0.08);
+    }
+
+    .pp-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 언어 토글 */
+    .lang-toggle {
+      display: flex;
+      background: #ece9e2;
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .lang-btn {
+      padding: 5px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* 컨텐츠 */
+    .pp-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    .pp-section {
+      display: none;
+    }
+
+    .pp-section.visible {
+      display: block;
+    }
+
+    /* 상단 요약 박스 */
+    .pp-summary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 20px 20px 16px;
+      margin-bottom: 24px;
+    }
+
+    .pp-summary-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .pp-summary ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pp-summary li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .pp-summary li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* 카드 */
+    .pp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .pp-card h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pp-card h2 .icon {
+      font-size: 18px;
+    }
+
+    .pp-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .pp-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .pp-card ul {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pp-card li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .pp-card li::before {
+      content: '•';
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* 하이라이트 박스 */
+    .pp-highlight {
+      background: rgba(160, 120, 48, 0.06);
+      border: 1px solid rgba(160, 120, 48, 0.2);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* 외부 링크 */
+    .pp-card a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .pp-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* 날짜 */
+    .pp-footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── [태블릿/대화면 전용] 반응형 스타일 ── */
+    @media (min-width: 600px) {
+      .pp-wrap {
+        padding: 50px 60px !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+      }
+
+      .pp-header h1 {
+        font-size: 30px !important;
+      }
+
+      .pp-summary {
+        padding: 30px !important;
+        margin-bottom: 35px !important;
+      }
+
+      .pp-summary-title {
+        font-size: 24px !important;
+        /* 핵심요약 제목 */
+      }
+
+      .pp-summary li {
+        font-size: 17px !important;
+        gap: 12px !important;
+      }
+
+      .pp-card {
+        padding: 30px !important;
+        margin-bottom: 20px !important;
+      }
+
+      .pp-card h2 {
+        font-size: 22px !important;
+        margin-bottom: 20px !important;
+      }
+
+      .pp-card h2 .icon {
+        font-size: 28px !important;
+      }
+
+      .pp-card p,
+      .pp-card li {
+        font-size: 16px !important;
+        line-height: 1.7 !important;
+      }
+
+      .pp-footer {
+        font-size: 14px !important;
+        margin-top: 50px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 헤더 -->
+  <div class="pp-header">
+    <div class="pp-header-left">
+      <a href="javascript:void(0)" onclick="handleClose()" class="back-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        <span id="close-label">닫기</span>
+      </a>
+      <span class="pp-title" id="page-title">개인정보처리방침</span>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+
+  <div class="pp-wrap">
+
+    <!-- ══════════════════════════════
+         한국어 섹션
+    ══════════════════════════════ -->
+    <div id="section-ko" class="pp-section visible">
+
+      <div class="pp-summary">
+        <div class="pp-summary-title">📋 핵심 요약</div>
+        <ul>
+          <li>마이크 오디오는 기기 내에서만 처리되며 외부 서버로 전송되지 않습니다.</li>
+          <li>측정 기록은 기기 내 저장소(localStorage)에만 저장됩니다.</li>
+          <li>이름, 이메일 등 개인식별정보를 수집하지 않습니다.</li>
+          <li>Google AdMob이 광고 관련 정보를 수집할 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📅</span>시행일</h2>
+        <p>본 방침은 2026년 5월 1일부터 적용됩니다.</p>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">🎙️</span>마이크 사용</h2>
+        <p>DecibelGuard는 소음을 측정하기 위해 기기의 마이크에 접근합니다.</p>
+        <ul>
+          <li>마이크 오디오는 <strong>실시간 소음 레벨 계산</strong>에만 사용됩니다</li>
+          <li>오디오 파일은 기기에 저장되지 않습니다.</li>
+          <li>오디오 데이터는 외부 서버로 전송되지 않습니다.</li>
+          <li>마이크 권한을 거부해도 앱의 다른 기능은 사용 가능합니다.</li>
+        </ul>
+        <div class="pp-highlight">
+          🔒 모든 음성 처리는 사용자의 기기 내에서만 이루어지며, DecibelGuard 개발자는 해당 데이터에 접근할 수 없습니다.
+        </div>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">💾</span>측정 기록 저장</h2>
+        <p>측정 세션이 종료되면 아래 정보가 기기에 저장됩니다.</p>
+        <ul>
+          <li>측정 시작 시각 (타임스탬프)</li>
+          <li>측정 시간 (초)</li>
+          <li>최소 / 평균 / 최대 dB 값</li>
+          <li>샘플 수</li>
+        </ul>
+        <div class="pp-highlight">
+          💡 모든 기록은 기기의 로컬 저장소(localStorage)에 저장됩니다. 앱 삭제 또는 브라우저 데이터 초기화 시 함께 삭제됩니다.
+        </div>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📢</span>광고 (Google AdMob)</h2>
+        <p>DecibelGuard는 Google AdMob을 통해 광고를 제공합니다. Google은 다음 정보를 수집할 수 있습니다.</p>
+        <ul>
+          <li>광고 ID (GAID / IDFA)</li>
+          <li>기기 정보 (모델, OS 버전)</li>
+          <li>IP 주소 (대략적 위치 추론에 사용)</li>
+          <li>광고 상호작용 데이터</li>
+        </ul>
+        <p>Google의 데이터 수집 및 사용에 관한 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank"
+            rel="noopener">Google 개인정보처리방침</a>을 참조하세요.</p>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📡</span>수집하지 않는 정보</h2>
+        <ul>
+          <li>이름, 이메일, 전화번호 등 개인식별정보</li>
+          <li>위치 정보 (GPS)</li>
+          <li>연락처, 사진, 파일 접근</li>
+          <li>로그인 정보 또는 계정 정보</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">👤</span>사용자 권리</h2>
+        <ul>
+          <li>앱 내 기록 탭에서 언제든지 측정 기록을 삭제할 수 있습니다.</li>
+          <li>기기 설정에서 마이크 권한을 언제든지 철회할 수 있습니다.</li>
+          <li>브라우저/앱 데이터 초기화로 모든 로컬 데이터를 삭제할 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">✉️</span>문의</h2>
+        <p>개인정보 처리 관련 문의사항이 있으시면 아래로 연락해 주세요.</p>
+        <p><a href="mailto:skji@zianplay.co.kr">skji@zianplay.co.kr</a></p>
+      </div>
+
+      <div class="pp-footer">
+        DecibelGuard · 개인정보처리방침 · 최종 수정일 2026년 5월 1일
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         English Section
+    ══════════════════════════════ -->
+    <div id="section-en" class="pp-section">
+
+      <div class="pp-summary">
+        <div class="pp-summary-title">📋 Key Summary</div>
+        <ul>
+          <li>Microphone audio is processed on-device only and never sent to any server.</li>
+          <li>Measurement history is stored only in the device's local storage.</li>
+          <li>We do not collect any personal identifiable information.</li>
+          <li>Google AdMob may collect ad-related information.</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📅</span>Effective Date</h2>
+        <p>This policy is effective from May 1, 2026.</p>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">🎙️</span>Microphone Usage</h2>
+        <p>DecibelGuard accesses your device's microphone solely to measure noise levels.</p>
+        <ul>
+          <li>Microphone audio is used <strong>only for real-time noise level calculation</strong></li>
+          <li>No audio files are saved to your device</li>
+          <li>Audio data is never transmitted to any external server</li>
+          <li>Denying microphone permission does not affect other app features</li>
+        </ul>
+        <div class="pp-highlight">
+          🔒 All audio processing happens entirely on your device. The DecibelGuard developer has no access to this
+          data.
+        </div>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">💾</span>Measurement History</h2>
+        <p>When a session ends, the following information is saved locally on your device.</p>
+        <ul>
+          <li>Session start timestamp</li>
+          <li>Duration (in seconds)</li>
+          <li>Minimum / Average / Maximum dB values</li>
+          <li>Sample count</li>
+        </ul>
+        <div class="pp-highlight">
+          💡 All records are stored in your device's localStorage. Deleting the app or clearing browser data will
+          permanently remove all records.
+        </div>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📢</span>Advertising (Google AdMob)</h2>
+        <p>DecibelGuard serves ads through Google AdMob. Google may collect the following:</p>
+        <ul>
+          <li>Advertising ID (GAID / IDFA)</li>
+          <li>Device information (model, OS version)</li>
+          <li>IP address (used to infer approximate location)</li>
+          <li>Ad interaction data</li>
+        </ul>
+        <p>For more information about Google's data practices, see the <a href="https://policies.google.com/privacy"
+            target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">📡</span>Information We Do NOT Collect</h2>
+        <ul>
+          <li>Personal identifiable information (name, email, phone)</li>
+          <li>Location data (GPS)</li>
+          <li>Contacts, photos, or file access</li>
+          <li>Login credentials or account information</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">👤</span>Your Rights</h2>
+        <ul>
+          <li>Delete any measurement record at any time from the History tab</li>
+          <li>Revoke microphone permission at any time in device settings</li>
+          <li>Clear all local data by resetting browser/app data</li>
+        </ul>
+      </div>
+
+      <div class="pp-card">
+        <h2><span class="icon">✉️</span>Contact</h2>
+        <p>For privacy-related questions, please contact us at:</p>
+        <p><a href="mailto:skji@zianplay.co.kr">skji@zianplay.co.kr</a></p>
+      </div>
+
+      <div class="pp-footer">
+        DecibelGuard · Privacy Policy · Last updated May 1, 2026
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const LABELS = {
+      ko: { close: '닫기', title: '개인정보처리방침' },
+      en: { close: 'Close', title: 'Privacy Policy' },
+    };
+
+    function setLang(lang) {
+      // 섹션 표시
+      document.getElementById('section-ko').classList.toggle('visible', lang === 'ko');
+      document.getElementById('section-en').classList.toggle('visible', lang === 'en');
+      // 버튼 상태
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : 'English'));
+      });
+      // 헤더 텍스트
+      document.getElementById('close-label').textContent = LABELS[lang].close;
+      document.getElementById('page-title').textContent = LABELS[lang].title;
+      document.documentElement.lang = lang;
+      localStorage.setItem('dg_lang', lang);
+    }
+
+    function handleClose() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isFromApp = urlParams.get('from') === 'app';
+
+      if (isFromApp) {
+        window.location.href = 'http://localhost/index.html#settings';
+      } else {
+        if (document.referrer && document.referrer.includes(window.location.hostname)) {
+          history.back();
+        } else {
+          try {
+            window.close();
+          } catch (e) { }
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 100);
+        }
+      }
+    }
+
+    // 앱 언어 설정 이어받기
+    (function () {
+      const saved = localStorage.getItem('dg_lang');
+      const nav = (navigator.language || 'en').split('-')[0];
+      const lang = (saved === 'ko' || saved === 'en') ? saved : (nav === 'ko' ? 'ko' : 'en');
+      setLang(lang);
+    })();
+  </script>
+
+</body>
+
+</html>
