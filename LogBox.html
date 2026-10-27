@@ -141,9 +141,9 @@
 
 <div class="container">
     <header>
-        <h1>로그박스 - 문자 · 알림 자동전달</h1>
+        <h1>로그박스 - 알림 자동 전달</h1>
         <div class="intro">
-            본 개인정보처리방침은 <strong>로그박스 - 문자 · 알림 자동전달</strong> 앱(이하 "본 앱")이 사용자의 개인정보를 어떻게 처리하는지에 대해 설명합니다. 본 앱은 사용자의 프라이버시를 최우선으로 생각하며, 불필요한 개인정보를 개발자의 외부 서버로 수집하거나 보관하지 않습니다.
+            본 개인정보처리방침은 <strong>로그박스 - 알림 자동 전달</strong> 앱(이하 "본 앱")이 사용자의 개인정보를 어떻게 처리하는지에 대해 설명합니다. 본 앱은 사용자의 프라이버시를 최우선으로 생각하며, 불필요한 개인정보를 개발자의 외부 서버로 수집하거나 보관하지 않습니다.
         </div>
     </header>
 
@@ -154,12 +154,14 @@
         <h3>가. 앱 내부 사용 권한 (디바이스 로컬 국한)</h3>
         <div class="highlight-box">
             <ul>
-                <li><span class="badge">SMS 권한</span> <strong>RECEIVE_SMS</strong>: 수신된 SMS 문자 메시지의 발신자 번호 및 본문을 감지하여 지정된 전송처로 전달하기 위해 사용됩니다.</li>
-                <li><span class="badge">전화 권한</span> <strong>READ_PHONE_STATE</strong>: 수신 시 디바이스 자체 폰 번호 확인 목적으로 기기 내부에서 참조됩니다.</li>
-                <li><span class="badge">알림 권한</span> <strong>NotificationListenerService</strong>: 스마트폰 상단 알림창에 노출되는 타사 앱(카카오톡, 뱅킹 앱 등)의 알림 메시지를 감지하여 전달하기 위해 사용됩니다.</li>
-                <li><span class="badge">앱 조회 권한</span> <strong>QUERY_ALL_PACKAGES</strong>: 알림창 자동전달 설정 시, 감지할 대상 앱을 직접 선택할 수 있도록 설치된 앱 목록과 아이콘을 화면에 표시하기 위한 목적으로 사용됩니다.</li>
+                <li><span class="badge">알림 접근</span> <strong>NotificationListenerService</strong>: 사용자가 시스템 설정에서 직접 허용한 경우에만, 사용자가 전달 대상으로 선택한 앱의 알림(앱 이름, 알림 제목, 알림 내용, 수신 시각)을 읽어 사용자가 지정한 수신처로 전달하기 위해 사용됩니다. 설정에서 언제든 허용을 해제할 수 있으며, 해제하면 전달이 중단됩니다.</li>
+                <li><span class="badge">전화번호</span> <strong>사용자 입력(선택)</strong>: 규칙별로 사용자가 직접 입력한 전화번호는 어느 폰의 알림인지 구분하도록 전달 내용과 함께 사용자가 지정한 수신처로 전송됩니다. 앱은 기기의 전화번호를 자동으로 읽지 않으며, 입력하지 않으면 전송하지 않습니다.</li>
+                <li><span class="badge">알림 표시</span> <strong>POST_NOTIFICATIONS</strong>: 전달 완료 및 상시 대기 상태를 알림으로 표시하기 위해 사용됩니다.</li>
+                <li><span class="badge">네트워크</span> <strong>INTERNET</strong>: 사용자가 지정한 REST API 또는 이메일(SMTP) 서버로 전달 내용을 전송하기 위해 사용됩니다.</li>
+                <li><span class="badge">백그라운드</span> <strong>FOREGROUND_SERVICE, RECEIVE_BOOT_COMPLETED</strong>: 사용자가 상시 대기 모드를 켠 경우 알림 전달이 중단되지 않도록 하고, 기기 재부팅 후 대기 상태를 복구하기 위해 사용됩니다.</li>
             </ul>
         </div>
+        <p>본 앱은 문자(SMS) 수신·읽기 권한, 전화 상태 권한, 설치된 앱 전체 목록 조회 권한을 사용하지 않습니다. 대상 앱 선택 화면에는 기기에서 실행 가능한 앱(런처 앱)의 이름과 아이콘만 표시되며 외부로 전송되지 않습니다.</p>
 
         <h3>나. 쿠키 및 자동 수집 장치</h3>
         <p>본 앱은 쿠키(Cookie)를 사용하지 않으며, 일체의 제3자 광고/트래킹 SDK를 탑재하지 않아 어떠한 비식별 기기 정보도 수집하지 않습니다.</p>
@@ -169,7 +171,7 @@
         <h2>2. 개인정보의 이용 목적 및 동작 방식</h2>
         <p>수집 및 접근된 모든 데이터는 오직 다음의 목적으로만 디바이스 내부에서 처리됩니다.</p>
         <ul>
-            <li><strong>문자 및 알림 자동전달 기능 수행</strong>: 수신된 SMS 및 알림 메시지를 사용자가 직접 설정한 외부 수신처(REST API URL, 텔레그램 봇, 이메일 SMTP)로만 전달합니다. (모든 규칙 검사는 기기 내부에서 동작)</li>
+            <li><strong>알림 자동 전달 기능 수행</strong>: 사용자가 선택한 앱의 알림 중 사용자가 직접 설정한 조건(인식 단어)에 맞는 알림의 정보(앱 이름, 제목, 내용, 수신 시각)를 사용자가 지정한 외부 수신처(REST API URL 또는 이메일 SMTP)로만 전달합니다. (규칙 검사는 기기 내부에서 동작)</li>
         </ul>
     </section>
 
@@ -178,7 +180,7 @@
         <p>본 앱은 사용자의 개인정보를 제3자에게 판매하거나 마케팅 목적으로 무단 공유하지 않습니다.</p>
 
         <h3>가. 사용자가 지정한 수신처로의 전달</h3>
-        <p>본 앱은 사용자가 직접 작성하고 승인한 전달 규칙에 의해서만 작동합니다. 수신된 데이터는 사용자가 지정한 REST API (URL) 또는 이메일(SMTP) 서버로만 전달됩니다.</p>
+        <p>본 앱은 사용자가 직접 작성하고 승인한 전달 규칙에 의해서만 작동합니다. 전달되는 데이터는 사용자가 지정한 REST API (URL) 또는 이메일(SMTP) 서버로만 전송되며, 개발자의 서버를 거치지 않습니다. 알림에는 인증번호 등 민감한 정보가 포함될 수 있으므로, 신뢰할 수 있는 수신처만 지정해 주세요. 암호화되지 않은 HTTP 주소로 전송하려면 사용자가 서버별로 별도 확인을 거쳐야 하며, HTTPS 사용을 권장합니다.</p>
     </section>
 
     <section>
@@ -197,14 +199,14 @@
         <p>본 앱의 개인정보 보호 및 서비스 이용 관련 문의사항은 아래 연락처로 문의해 주시기 바랍니다.</p>
         
         <div class="contact-card">
-            <p><strong>서비스명</strong>: 로그박스 - 문자 · 알림 자동전달</p>
-            <p><strong>문의 이메일</strong>: <a href="mailto:skji@zianplay.co.kr" style="color: var(--primary-color); font-weight: bold;">skji@zianplay.co.kr</a></p>
+            <p><strong>서비스명</strong>: 로그박스 - 알림 자동 전달</p>
+            <p><strong>문의 이메일</strong>: <a href="mailto:zianplatform@gmail.com" style="color: var(--primary-color); font-weight: bold;">zianplatform@gmail.com</a></p>
             <p><strong>담당자</strong>: 개인정보 보호 담당자</p>
         </div>
     </section>
 
     <footer>
-        시행일자: 2026년 10월 01일 | &copy; 로그박스 All rights reserved.
+        시행일자: 2026년 10월 26일 | &copy; 로그박스 All rights reserved.
     </footer>
 </div>
 
